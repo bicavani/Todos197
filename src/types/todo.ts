@@ -7,6 +7,7 @@ export interface ITodo extends Document {
   isImportant: boolean
   isMyDate: boolean
   expDate: string
+  notification: boolean
 }
 
 

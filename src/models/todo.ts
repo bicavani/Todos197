@@ -26,6 +26,10 @@ const todoSchema: Schema = new Schema(
     expDate: {
       type: String,
       required: false
+    },
+    notification: {
+      type: Boolean,
+      required: false
     }
   },
   {timestamps: true}
