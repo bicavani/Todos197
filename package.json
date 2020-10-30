@@ -26,6 +26,8 @@
   },
   "scripts": {
     "build": "tsc",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "start": "concurrently \"tsc -w\" \"nodemon dist/js/app.js\""
   }
+  
 }
