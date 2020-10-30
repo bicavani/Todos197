@@ -23,6 +23,10 @@ const todoSchema: Schema = new Schema(
       type: Boolean,
       required: false,
     },
+    expDate: {
+      type: Boolean,
+      required: false
+    }
   },
   {timestamps: true}
 )

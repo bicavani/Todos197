@@ -6,6 +6,7 @@ export interface ITodo extends Document {
   isComplete: boolean
   isImportant: boolean
   isMyDate: boolean
+  expDate: string
 }
 
 

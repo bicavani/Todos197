@@ -22,9 +22,6 @@
     "concurrently": "^5.3.0",
     "nodemon": "^2.0.6"
   },
-  "devDependencies": {
-    
-  },
   "scripts": {
     "build": "tsc",
     "start": "concurrently \"tsc -w\" \"nodemon dist/js/app.js\""
