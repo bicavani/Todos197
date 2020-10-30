@@ -24,7 +24,7 @@ const todoSchema: Schema = new Schema(
       required: false,
     },
     expDate: {
-      type: Boolean,
+      type: String,
       required: false
     }
   },
