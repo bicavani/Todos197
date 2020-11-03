@@ -27,8 +27,8 @@ const todoSchema: Schema = new Schema(
       type: String,
       required: false
     },
-    notification: {
-      type: Boolean,
+    remindTime: {
+      type: String,
       required: false
     }
   },
