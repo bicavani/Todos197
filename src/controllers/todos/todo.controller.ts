@@ -1,12 +1,25 @@
 import {Response, Request} from 'express'
 import {ITodo} from '../../types/todo'
 import Todo from '../../models/todo'
-import { nanoid } from 'nanoid'
 
 const getTodos = async (req: Request, res: Response): Promise<void> => {
   try {
     const todos: ITodo[] = await Todo.find()
     res.status(200).json({todos})
+  } catch (error) {
+    throw error
+  }
+}
+
+const deleteAllTodos = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const todos = await Todo.remove({})
+    res
+      .status(200)
+      .json({
+        message: "Todos deleted all",
+        todos
+      })
   } catch (error) {
     throw error
   }
@@ -67,4 +80,4 @@ const deleteTodo = async (req: Request, res: Response): Promise<void> => {
   }
 }
 
-export {getTodos, addTodo, updateTodo, deleteTodo}
+export {getTodos, addTodo, updateTodo, deleteTodo, deleteAllTodos}
