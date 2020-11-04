@@ -13,12 +13,12 @@ const getTodos = async (req: Request, res: Response): Promise<void> => {
 
 const deleteAllTodos = async (req: Request, res: Response): Promise<void> => {
   try {
-    const todos = await Todo.remove({})
+    await Todo.remove({})
     res
       .status(200)
       .json({
         message: "Todos deleted all",
-        todos
+        todos: []
       })
   } catch (error) {
     throw error
