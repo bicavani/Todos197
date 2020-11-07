@@ -9,18 +9,34 @@ const todoSchema = new mongoose_1.Schema({
     description: {
         type: String,
         required: false,
+        default: '',
     },
     isComplete: {
         type: Boolean,
-        required: true,
+        default: false,
+        required: false,
     },
     isImportant: {
         type: Boolean,
         required: false,
+        default: false
     },
     isMyDate: {
         type: Boolean,
         required: false,
+        default: false
     },
+    expDate: {
+        type: String,
+        required: false,
+    },
+    remindTime: {
+        type: String,
+        required: false,
+    },
+    user: {
+        type: mongoose_1.Schema.Types.ObjectId,
+        required: true
+    }
 }, { timestamps: true });
 exports.default = mongoose_1.model('Todo', todoSchema);

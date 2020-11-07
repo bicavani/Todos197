@@ -1,4 +1,4 @@
-import {Document} from 'mongoose'
+import { Document } from 'mongoose'
 
 export interface ITodo extends Document {
   title: string
@@ -8,6 +8,7 @@ export interface ITodo extends Document {
   isMyDate: boolean
   expDate: string
   remindTime: string
+  user: string
 }
 
 

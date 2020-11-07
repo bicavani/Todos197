@@ -1,38 +1,47 @@
-import {ITodo} from '../types/todo'
-import {model, Schema} from 'mongoose'
+import { ITodo } from '../types/todo'
+import { model, Schema } from 'mongoose'
 
 const todoSchema: Schema = new Schema(
   {
     title: {
       type: String,
-      required: true, 
+      required: true,
     },
     description: {
       type: String,
-      required: false, 
+      required: false,
+      default: '',
     },
     isComplete: {
       type: Boolean,
-      required: true, 
+      default: false,
+      required: false,
     },
     isImportant: {
       type: Boolean,
       required: false,
+      default: false
     },
     isMyDate: {
       type: Boolean,
       required: false,
+      default: false
     },
     expDate: {
       type: String,
-      required: false
+      required: false,
     },
     remindTime: {
       type: String,
-      required: false
+      required: false,
+    },
+    user: {
+      type: Schema.Types.ObjectId,
+      required: true
+
     }
   },
-  {timestamps: true}
+  { timestamps: true }
 )
 
 export default model<ITodo>('Todo', todoSchema)
