@@ -1,5 +1,4 @@
-import { Response, Request } from 'express'
-import { IUser } from '../types/user'
+import { Request, Response } from 'express'
 import User from '../models/user.model'
 
 const { validationResult } = require('express-validator')

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { signupUser, loginUser, loggedIn } from '../controllers/user.controller';
+import { loggedIn, loginUser, signupUser } from '../controllers/user.controller';
 import { auth } from '../middleware/auth.middleware';
 
 const { check } = require('express-validator');
@@ -17,7 +17,7 @@ router.post(
     check('email', 'Please enter a valid email').isEmail(),
     check("password", "invalid password")
       .isLength({ min: 6 })
-      .custom((value: any, { req, loc, path }) => {
+      .custom((value: any, { req }: { req: any }) => {
         if (value !== req.body.confirmPassword) {
           // trow error if passwords do not match
           throw new Error("Passwords don't match");

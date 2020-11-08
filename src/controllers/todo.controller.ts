@@ -1,10 +1,9 @@
-import { Response, Request } from 'express'
-import { ITodo } from '../types/todo'
+import { validationResult } from 'express-validator'
 import Todo from '../models/todo.model'
 import User from '../models/user.model'
-import { validationResult } from 'express-validator'
+import { ITodo } from '../types/todo'
 
-const getTodos = async (req: Request, res: Response): Promise<void> => {
+const getTodos = async (req: any, res: any) => {
   const user = await User.findOne({ _id: req.user.id })
   if (!user) {
     return res.status(400).json({ message: 'user does not exist' })
@@ -17,7 +16,7 @@ const getTodos = async (req: Request, res: Response): Promise<void> => {
   }
 }
 
-const deleteAllTodos = async (req: Request, res: Response): Promise<void> => {
+const deleteAllTodos = async (req: any, res: any) => {
   const user = await User.findOne({ _id: req.user.id })
   if (!user) {
     return res.status(400).json({ message: 'user does not exist' })
@@ -35,7 +34,7 @@ const deleteAllTodos = async (req: Request, res: Response): Promise<void> => {
   }
 }
 
-const addTodo = async (req: Request, res: Response): Promise<void> => {
+const addTodo = async (req: any, res: any) => {
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
     return res.status(400).json(errors)
@@ -66,7 +65,7 @@ const addTodo = async (req: Request, res: Response): Promise<void> => {
 }
 
 
-const updateTodo = async (req: Request, res: Response): Promise<void> => {
+const updateTodo = async (req: any, res: any) => {
   const errors = validationResult(req)
   if (!errors.isEmpty()) {
     return res.status(400).json(errors)
@@ -96,13 +95,13 @@ const updateTodo = async (req: Request, res: Response): Promise<void> => {
   }
 }
 
-const deleteTodo = async (req: Request, res: Response): Promise<void> => {
+const deleteTodo = async (req: any, res: any) => {
   const user = await User.findOne({ _id: req.user.id })
   if (!user) {
     return res.status(400).json({ message: 'user does not exist' })
   }
   try {
-    const todoDelete: ITodo | null = await Todo.findByIdAndRemove({ _id: req.params.id })
+    await Todo.findByIdAndRemove({ _id: req.params.id })
     const allTodos: ITodo[] = await Todo.find()
 
     res
@@ -117,3 +116,4 @@ const deleteTodo = async (req: Request, res: Response): Promise<void> => {
 }
 
 export { getTodos, addTodo, updateTodo, deleteTodo, deleteAllTodos }
+

@@ -13,7 +13,7 @@ router.post('/signup', [
     check('email', 'Please enter a valid email').isEmail(),
     check("password", "invalid password")
         .isLength({ min: 6 })
-        .custom((value, { req, loc, path }) => {
+        .custom((value, { req }) => {
         if (value !== req.body.confirmPassword) {
             // trow error if passwords do not match
             throw new Error("Passwords don't match");

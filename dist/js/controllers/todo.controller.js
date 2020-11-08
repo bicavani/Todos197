@@ -13,9 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteAllTodos = exports.deleteTodo = exports.updateTodo = exports.addTodo = exports.getTodos = void 0;
+const express_validator_1 = require("express-validator");
 const todo_model_1 = __importDefault(require("../models/todo.model"));
 const user_model_1 = __importDefault(require("../models/user.model"));
-const express_validator_1 = require("express-validator");
 const getTodos = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield user_model_1.default.findOne({ _id: req.user.id });
     if (!user) {
@@ -108,7 +108,7 @@ const deleteTodo = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         return res.status(400).json({ message: 'user does not exist' });
     }
     try {
-        const todoDelete = yield todo_model_1.default.findByIdAndRemove({ _id: req.params.id });
+        yield todo_model_1.default.findByIdAndRemove({ _id: req.params.id });
         const allTodos = yield todo_model_1.default.find();
         res
             .status(200)
