@@ -1,7 +1,7 @@
 {
   "name": "todos197",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "server.js",
   "license": "MIT",
   "engines": {
     "node": "14.15.0"
@@ -27,6 +27,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "concurrently \"tsc -w\" \"nodemon dist/js/server.js\""
+    "start": "concurrently \"tsc -w\" \"nodemon dist/js/server.js\"",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm start\" \"npm run client\""
   }
 }
