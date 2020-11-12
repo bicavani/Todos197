@@ -28,8 +28,8 @@
   "scripts": {
     "build": "tsc",
     "start": "concurrently \"tsc -w\" \"nodemon dist/js/server.js\"",
-    "client": "npm start --prefix client",
+    "client": "npm start --prefix src/client",
     "dev": "concurrently \"npm start\" \"npm run client\"",
-    "heroku-postbuild": "cd dist/js/client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build"
   }
 }

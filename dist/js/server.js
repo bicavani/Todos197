@@ -19,9 +19,9 @@ app.use(cors_1.default());
 app.use('/todos', auth_middleware_1.auth, todo_route_1.default);
 app.use('/user', user_route_1.default);
 if (process.env.NODE_ENV === "production") {
-    app.use(express_1.default.static("client/build"));
+    app.use(path_1.default.join(__dirname, 'client/build'));
     app.get("*", (req, res) => {
-        res.sendFile(path_1.default.join(__dirname, "client", "build", "index.html"));
+        res.sendFile(path_1.default.join(__dirname + '/client/build/index.html'));
     });
 }
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
