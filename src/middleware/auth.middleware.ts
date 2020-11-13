@@ -1,11 +1,12 @@
 const jwt = require('jsonwebtoken');
 
 export const auth = (req: any, res: any, next: any) => {
-  const token = req.header('Authorization');
+  let token = req.header('Authorization');
+  if (!token) token = req.params.token
   if (!token) return res.status(401).json({ message: 'auth error' });
 
   try {
-    const decoded = jwt.verify(token, 'randomString');
+    const decoded = jwt.verify(token, 'secret');
     req.user = decoded.user;
     next();
   } catch (error) {

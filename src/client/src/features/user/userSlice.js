@@ -2,10 +2,18 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import userApi from 'api/userApi'
 
 export const getUser = createAsyncThunk(
-  'auth/getUser',
+  'user/getUser',
   async () => {
     const currentUser = await userApi.getUser()
     return currentUser
+  }
+)
+
+export const updatePassword = createAsyncThunk(
+  'user/updatePassword',
+  async data => {
+    const res = await userApi.updatePassword(data)
+    return res.user
   }
 )
 
@@ -22,6 +30,9 @@ const userSlice = createSlice({
   },
   extraReducers: {
     [getUser.fulfilled]: (state, action) => {
+      state.current = action.payload
+    },
+    [updatePassword.fulfilled]: (state, action) => {
       state.current = action.payload
     },
   }

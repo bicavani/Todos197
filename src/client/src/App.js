@@ -1,10 +1,9 @@
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import { setAuthTokenRequest } from 'api/axiosClient';
-import { setUser } from 'app/userSlice';
 import LandingPage from 'components/LandingPage';
-import Loading from 'components/Loading';
 import PrivateRoute from 'components/PrivateRoute';
+import { setUser } from 'features/user/userSlice';
 import jwt_decode from 'jwt-decode';
 import React, { Suspense, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -15,6 +14,8 @@ import {
 import Signin from './features/auth/pages/Signin';
 import Signup from './features/auth/pages/Signup';
 import DashBoard from './features/todos/DashBoard';
+import ResetPassword from './features/user/ResetPassword';
+import GetEmailResetPassword from './features/user/GetEmailResetPassword';
 
 
 function App() {
@@ -63,6 +64,8 @@ function App() {
                 <Route exact path="/" component={LandingPage} />
                 <Route exact path="/signin" component={Signin} />
                 <Route exact path="/signup" component={Signup} />
+                <Route path="/user/reset-password" component={ResetPassword} />
+                <Route exact path="/user/forgot-password" component={GetEmailResetPassword} />
                 <PrivateRoute path='/tasks'>
                   <DashBoard
                     prefersDarkMode={prefersDarkMode}

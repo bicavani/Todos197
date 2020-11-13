@@ -13,7 +13,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import FormatListNumberedRtlIcon from '@material-ui/icons/FormatListNumberedRtl';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import SearchIcon from '@material-ui/icons/Search';
-import { setUser } from 'app/userSlice';
+import { setUser } from 'features/user/userSlice';
 import PropTypes from 'prop-types';
 import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

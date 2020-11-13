@@ -6,6 +6,9 @@ const auth_middleware_1 = require("../middleware/auth.middleware");
 const { check } = require('express-validator');
 const router = express_1.Router();
 router.get('/me', auth_middleware_1.auth, user_controller_1.loggedIn);
+router.put('/edit-password', auth_middleware_1.auth, user_controller_1.updateNewPassword);
+router.post('/get-emailreset', user_controller_1.sendEmailToResetPassword);
+router.put('/reset-password/:token', auth_middleware_1.auth, user_controller_1.resetPassword);
 router.post('/signup', [
     check('username', 'Please Enter a Valid Username')
         .not()

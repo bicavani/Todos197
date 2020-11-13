@@ -1,5 +1,11 @@
 import { Router } from 'express';
-import { loggedIn, loginUser, signupUser } from '../controllers/user.controller';
+import {
+  loggedIn,
+  loginUser,
+  signupUser,
+  updateNewPassword, sendEmailToResetPassword,
+  resetPassword
+} from '../controllers/user.controller';
 import { auth } from '../middleware/auth.middleware';
 
 const { check } = require('express-validator');
@@ -7,6 +13,12 @@ const { check } = require('express-validator');
 const router: Router = Router();
 
 router.get('/me', auth, loggedIn);
+
+router.put('/edit-password', auth, updateNewPassword)
+
+router.post('/get-emailreset', sendEmailToResetPassword)
+
+router.put('/reset-password/:token', auth, resetPassword)
 
 router.post(
   '/signup',

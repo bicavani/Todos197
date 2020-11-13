@@ -7,6 +7,8 @@ import userRoutes from './routes/user.route';
 import { auth } from './middleware/auth.middleware';
 import path from 'path'
 
+require('dotenv').config()
+
 const app: Express = express();
 
 const PORT: string | number = process.env.PORT || 8080;

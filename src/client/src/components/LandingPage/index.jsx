@@ -24,14 +24,14 @@ function LandingPage() {
     setOpen(false)
     setTimeout(() => {
       history.push('./signin')
-    }, 2000)
+    }, 1000)
   }
 
   const handleClickSignup = () => {
     setOpen(false)
     setTimeout(() => {
       history.push('./signup')
-    }, 2000)
+    }, 1000)
   }
 
   return (

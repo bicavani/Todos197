@@ -1,5 +1,5 @@
 import { Box, withStyles } from '@material-ui/core';
-import { getUser } from 'app/userSlice';
+import { getUser } from 'features/user/userSlice';
 import MenuLeft from 'components/MenuLeft';
 import NavBar from 'components/NavBar';
 import AlertTodosList from 'features/todos/components/AlertTodosList';

@@ -14,7 +14,7 @@ function Loading(props) {
         <img src={logo} height="79px" alt="logo" />
       </Box>
       <Box py={5}>
-        <Typography variant="h4" >Loading Todos197...</Typography>
+        <Typography variant="h4" >Todos197</Typography>
       </Box>
       <CircularProgress />
     </Box>

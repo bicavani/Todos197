@@ -49,9 +49,12 @@ export default function MessageModal({ open, handleClose, message }) {
           <div className={classes.paper}>
             <h2 id="transition-modal-title">{message}</h2>
             <p id="transition-modal-description">
-              {message === 'register succeeded' ?
+              {message === 'register succeeded' ||
+                message === 'password updatted succefull' ?
                 'Login để sử dụng app' :
-                'Kiểm tra lại thông tin của bạn'
+                message === 'Send email succeeded' ?
+                  'Kiểm tra hộp thư của bạn để reset password !' :
+                  'Kiểm tra lại thông tin của bạn'
               }
             </p>
           </div>

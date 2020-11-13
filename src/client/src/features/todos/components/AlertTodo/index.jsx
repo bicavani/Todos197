@@ -26,12 +26,14 @@ let AlertTodo = (props) => {
 
   useEffect(() => {
     let idTimeout
+
     if (millis > 0) {
       idTimeout = setTimeout(() => setOpen(true), millis)
     }
-    return () => clearTimeout(idTimeout)
-
-  }, [millis])
+    return function cleanup() {
+      clearTimeout(idTimeout)
+    }
+  }, [todo.remindTime])
 
   const deleteRemind = async () => {
     try {
