@@ -13,7 +13,7 @@ exports.transporter = nodemailer_1.default.createTransport({
         pass: process.env.EMAIL_PASSWORD
     }
 });
-exports.getPasswordResetURL = (user, token) => `http://localhost:3000/user/reset-password/${token}`;
+exports.getPasswordResetURL = (user, token) => `https://todos197.herokuapp.com/user/reset-password/${token}`;
 exports.resetPasswordTemplate = (user, url) => {
     const from = process.env.EMAIL_LOGIN;
     const to = user.email;
